@@ -1,25 +1,30 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import { ProjectProvider, useProject } from './context/ProjectContext'; // Import useProject
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import { ProjectProvider, useProject } from './context/ProjectContext';
 import './App.css';
 
-// Create a new component so we can access the context
 const AppContent = () => {
-  const { theme } = useProject(); // Get the theme from the context
-
+  const { theme } = useProject();
   return (
-    // Add the theme as a class name
     <div className={`App ${theme}`}>
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
     </div>
   );
 }
 
 function App() {
   return (
-    // The provider must be on the outside
     <ProjectProvider>
-      <AppContent />
+      <Router>
+        <AppContent />
+      </Router>
     </ProjectProvider>
   );
 }

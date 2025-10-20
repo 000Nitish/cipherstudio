@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const { saveProject, getProjectById } = require('../controllers/project.controller');
+// CORRECT: This should only import the project controller
+const { saveProject, getProjectById, updateProject } = require('../controllers/project.controller');
 
 router.post('/', saveProject);
 router.get('/:id', getProjectById);
+router.put('/:id', updateProject);
 
 module.exports = router;

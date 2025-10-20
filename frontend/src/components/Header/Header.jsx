@@ -1,9 +1,9 @@
 import React from 'react';
-import { useProject } from '../../context/ProjectContext'; // 1. Import useProject
+import { Link } from 'react-router-dom'; // 1. Import Link from react-router-dom
+import { useProject } from '../../context/ProjectContext';
 import './Header.css';
 
 const Header = () => {
-  // 2. Get theme and toggleTheme from the context
   const { theme, toggleTheme } = useProject();
 
   return (
@@ -15,7 +15,6 @@ const Header = () => {
         <span className="app-name">CipherStudio</span>
         
         <label className="theme-switcher">
-          {/* 3. Connect the switch to our state and function */}
           <input 
             type="checkbox" 
             checked={theme === 'dark'} 
@@ -24,7 +23,8 @@ const Header = () => {
           <span className="slider"></span>
         </label>
         
-        <button className="login-button">Login</button>
+        {/* 2. Replace the <button> with a <Link> component */}
+        <Link to="/login" className="login-button">Login</Link>
       </div>
     </header>
   );
