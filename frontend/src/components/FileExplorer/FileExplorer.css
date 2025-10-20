@@ -116,3 +116,18 @@
   border-right: 1px solid #333;
   overflow-y: auto; /* Add scroll if file list is long */
 }
+
+.file-explorer {
+  width: 200px;
+  /* CHANGE THESE LINES */
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  border-right: 1px solid var(--border-color);
+  
+  /* Keep the rest of the styles */
+  padding: 10px;
+  height: calc(100vh - 45px - 35px - 25px);
+  overflow-y: auto;
+}
+
+/* ... (keep the rest of the styles like .file-explorer-header, etc.) ... */

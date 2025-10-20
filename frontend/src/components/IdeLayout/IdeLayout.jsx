@@ -3,7 +3,8 @@ import { useProject } from '../../context/ProjectContext';
 import './IdeLayout.css';
 
 const IdeLayout = () => {
-  const { files, setFiles, activeFile } = useProject();
+  // 1. Get 'theme' from the context, along with your other variables
+  const { files, setFiles, activeFile, theme } = useProject();
 
   const handleCodeUpdate = (newCode) => {
     if (activeFile) {
@@ -18,10 +19,10 @@ const IdeLayout = () => {
     <div className="ide-wrapper">
       <Sandpack
         template="react"
-        theme="dark"
+        // 2. Change the hardcoded "dark" to use the theme variable
+        theme={theme}
         options={{
-          // RE-ADD THIS LINE WITH THE CORRECT CALCULATION
-          editorHeight: 'calc(100vh - 45px - 35px - 25px)', // Total Height - Header - Controls - Footer
+          editorHeight: 'calc(100vh - 45px - 35px - 25px)',
           showTabs: true,
           showLineNumbers: true,
           activeFile: activeFile,

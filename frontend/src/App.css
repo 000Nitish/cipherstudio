@@ -4,3 +4,23 @@
   height: 100%;
   width: 100%;
 }
+
+/* ... keep .App style ... */
+
+/* -- DARK THEME (DEFAULT) -- */
+.App.dark {
+  --background-primary: #1e1e1e;
+  --background-secondary: #252526;
+  --text-primary: #cccccc;
+  --border-color: #333333;
+  --accent-color: #007acc;
+}
+
+/* -- LIGHT THEME -- */
+.App.light {
+  --background-primary: #ffffff;
+  --background-secondary: #f3f3f3;
+  --text-primary: #222222;
+  --border-color: #e0e0e0;
+  --accent-color: #007acc;
+}

@@ -1,20 +1,20 @@
 .controls-bar {
   padding: 5px 10px;
-  background-color: #333;
+  background-color: var(--background-secondary); /* Changed */
   display: flex;
   gap: 10px;
-  border-bottom: 1px solid #444;
+  border-bottom: 1px solid var(--border-color); /* Changed */
 }
 
 .controls-bar button {
   padding: 5px 10px;
-  background-color: #555;
-  color: white;
-  border: 1px solid #666;
+  background-color: var(--border-color); /* Changed */
+  color: var(--text-primary); /* Changed */
+  border: 1px solid #666; /* Keep or change as you like */
   border-radius: 4px;
   cursor: pointer;
 }
 
 .controls-bar button:hover {
-  background-color: #666;
+  opacity: 0.8; /* Simple hover effect */
 }

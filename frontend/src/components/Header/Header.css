@@ -91,3 +91,36 @@ input:checked + .slider:before {
   transform: translateX(24px);
   content: "🌙"; /* Dark mode icon */
 }
+
+/*New */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--background-secondary); /* Changed */
+  color: var(--text-primary); /* Changed */
+  border-bottom: 1px solid var(--border-color); /* Changed */
+  height: 45px;
+}
+
+/* ... keep .logo, .header-right, .app-name ... */
+
+.login-button {
+  padding: 6px 15px;
+  background-color: var(--accent-color); /* Changed */
+  color: white; /* Keep white for contrast */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  opacity: 0.8; /* Simple hover effect */
+}
+
+/* ... keep theme switcher styles ... */
+input:checked + .slider {
+  background-color: var(--accent-color); /* Changed */
+}

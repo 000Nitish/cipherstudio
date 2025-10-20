@@ -10,6 +10,9 @@ const ProjectContext = createContext();
 export const ProjectProvider = ({ children }) => {
   const [files, setFiles] = useState(defaultFiles);
   const [activeFile, setActiveFile] = useState("/App.js");
+  
+  // NEW: Add state for the theme
+  const [theme, setTheme] = useState('dark'); // 'dark' is the default
 
   // Your existing function (unchanged)
   const addNewFileOrFolder = (name) => {
@@ -17,7 +20,7 @@ export const ProjectProvider = ({ children }) => {
     setActiveFile(name);
   };
 
-  // NEW: Function to delete a file or folder
+  // Your existing function (unchanged)
   const deleteFile = (path) => {
     setFiles(currentFiles => {
       const newFiles = { ...currentFiles };
@@ -39,7 +42,7 @@ export const ProjectProvider = ({ children }) => {
     });
   };
 
-  // NEW: Function to rename a file or folder
+  // Your existing function (unchanged)
   const renameFile = (oldPath, newPath) => {
     setFiles(currentFiles => {
       const newFiles = { ...currentFiles };
@@ -64,14 +67,21 @@ export const ProjectProvider = ({ children }) => {
     });
   };
 
+  // NEW: Function to toggle the theme
+  const toggleTheme = () => {
+    setTheme(currentTheme => (currentTheme === 'dark' ? 'light' : 'dark'));
+  };
+
   const value = {
     files,
     setFiles,
     activeFile,
     setActiveFile,
     addNewFileOrFolder,
-    deleteFile, // Expose the new functions
-    renameFile, // Expose the new functions
+    deleteFile,
+    renameFile,
+    theme,        // Expose the new theme state
+    toggleTheme,  // Expose the new toggle function
   };
 
   return (
