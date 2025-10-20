@@ -1,0 +1,17 @@
+/* NEW: Main layout styles to control the whole page */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Make the layout fill the entire screen height */
+}
+
+.main-content {
+  display: flex;
+  flex: 1; /* This is the crucial part: it makes this section grow to fill available space */
+  overflow: hidden; /* Prevents content from overflowing */
+}
+
+.editor-container {
+  flex: 1;
+  display: flex; /* Ensure IdeLayout also fills its container */
+}

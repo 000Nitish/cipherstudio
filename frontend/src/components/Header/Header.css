@@ -1,0 +1,93 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #252526;
+  color: white;
+  border-bottom: 1px solid #333;
+  height: 45px; /* Fixed height */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Adds space between items */
+}
+
+.app-name {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.login-button {
+  padding: 6px 15px;
+  background-color: #007acc;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.login-button:hover {
+  background-color: #005f9e;
+}
+
+/* --- Theme Switcher Styles --- */
+.theme-switcher {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.theme-switcher input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #444;
+  transition: .4s;
+  border-radius: 25px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "☀️"; /* Light mode icon */
+  height: 21px;
+  width: 21px;
+  left: 3px;
+  bottom: 2px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+input:checked + .slider {
+  background-color: #007acc;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+  content: "🌙"; /* Dark mode icon */
+}

@@ -1,0 +1,118 @@
+.file-explorer {
+  width: 200px;
+  background-color: #1e1e1e;
+  color: #ccc;
+  padding: 10px;
+  height: calc(100vh - 45px);
+  border-right: 1px solid #333; /* Added a border */
+}
+
+/* UPDATED HEADER STYLES */
+.file-explorer-header {
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between; /* Pushes items to ends */
+  align-items: center;
+}
+
+/* NEW ICON STYLES */
+.action-icons {
+  display: flex;
+  gap: 5px; /* Space between icons */
+}
+
+.action-icons button {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 1.2rem; /* Make icons bigger */
+  padding: 2px;
+  border-radius: 3px;
+}
+
+.action-icons button:hover {
+  background-color: #3e3e42;
+}
+
+.file-explorer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.file-explorer li {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.file-explorer li:hover {
+  background-color: #2a2d2e;
+}
+.file-explorer li.active {
+  background-color: #007acc;
+  color: white;
+}
+
+.new-item-input-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.new-item-input {
+  background-color: #3e3e42;
+  color: white;
+  border: 1px solid #007acc;
+  outline: none;
+  width: 100%;
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+/* NEW STYLES for the tree view */
+.file-explorer ul {
+  padding-left: 15px; /* Add indentation for nested lists */
+  border-left: 1px solid #333;
+}
+
+.file-explorer li {
+  list-style: none; /* Remove default bullet points */
+}
+
+.file-item {
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Use the existing .active class for highlighting */
+.file-item.active {
+  background-color: #007acc;
+  color: white;
+}
+
+.file-explorer {
+  width: 200px;
+  background-color: #1e1e1e;
+  color: #ccc;
+  padding: 10px;
+  /* height: calc(100vh - 45px); */ /* <--- DELETE THIS LINE */
+  border-right: 1px solid #333;
+}
+
+.file-explorer {
+  width: 200px;
+  background-color: #1e1e1e;
+  color: #ccc;
+  padding: 10px;
+  /* ADD THIS LINE BACK WITH THE CORRECT CALCULATION */
+  height: calc(100vh - 45px - 35px - 25px); /* Total Height - Header - Controls - Footer */
+  border-right: 1px solid #333;
+  overflow-y: auto; /* Add scroll if file list is long */
+}
