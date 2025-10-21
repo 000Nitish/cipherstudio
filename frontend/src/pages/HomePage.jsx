@@ -4,7 +4,8 @@ import FileExplorer from '../components/FileExplorer/FileExplorer.jsx';
 import IdeLayout from '../components/IdeLayout/IdeLayout.jsx';
 import Controls from '../components/Controls/Controls.jsx';
 import Footer from '../components/Footer/Footer.jsx'; // 1. Import the Footer
-import './HomePage.css';
+import './Homepage.css';
+
 
 const HomePage = () => {
   return (
