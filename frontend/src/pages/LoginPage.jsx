@@ -18,6 +18,9 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       const response = await login(formData);
+      // --- THIS IS THE FIX ---
+      // Save the received token to localStorage
+      localStorage.setItem('token', response.token);
       // For now, we'll just show an alert. In the next step, we'll save the token.
       alert('Login successful!');
       console.log('Received token:', response.token);

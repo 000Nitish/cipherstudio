@@ -3,7 +3,13 @@ const mongoose = require('mongoose');
 const ProjectSchema = new mongoose.Schema({
   files: {
     type: Object,
-    required: [true, 'Project files are required.'],
+    required: true,
+  },
+  // NEW: Add a reference to the User model
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
   },
   createdAt: {
     type: Date,

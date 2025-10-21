@@ -1,22 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useProject } from '../../context/ProjectContext';
+import ProjectList from '../ProjectList/ProjectList'; // 1. Import the new ProjectList component
 import './Controls.css';
 
 const Controls = () => {
-  const { saveCurrentProject, loadProject } = useProject();
-
-  const handleLoad = () => {
-    const projectId = prompt("Please enter the Project ID to load:");
-    if (projectId) {
-      loadProject(projectId.trim());
-    }
-  };
+  const { saveCurrentProject } = useProject();
+  // 2. Add state to show/hide the project list modal
+  const [showProjectList, setShowProjectList] = useState(false);
 
   return (
-    <div className="controls-bar">
-      <button onClick={saveCurrentProject}>Save Project</button>
-      <button onClick={handleLoad}>Load Project</button>
-    </div>
+    // Use a React Fragment <> to wrap multiple components
+    <>
+      <div className="controls-bar">
+        <button onClick={saveCurrentProject}>Save Project</button>
+        {/* 3. Make the button toggle the modal's visibility */}
+        <button onClick={() => setShowProjectList(true)}>Load Project</button>
+      </div>
+      
+      {/* 4. Conditionally render the ProjectList modal */}
+      {showProjectList && <ProjectList onClose={() => setShowProjectList(false)} />}
+    </>
   );
 };
 
