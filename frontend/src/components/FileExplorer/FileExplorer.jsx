@@ -1,21 +1,18 @@
-import React, { useState, useMemo } from 'react';
-import { useProject } from '../../context/ProjectContext';
-import ContextMenu from '../ContextMenu/ContextMenu'; // 1. Import ContextMenu
+import React, { useState, useMemo, useContext } from 'react'; // 1. Import useContext
+import { ProjectContext } from '../../context/ProjectContext'; // 2. Import ProjectContext
+import ContextMenu from '../ContextMenu/ContextMenu';
 import './FileExplorer.css';
 
 const FileExplorer = () => {
-  // 2. Get the new functions from the context
-  const { files, activeFile, setActiveFile, addNewFileOrFolder, deleteFile, renameFile } = useProject();
+  // 3. Change useProject() to useContext(ProjectContext)
+  const { files, activeFile, setActiveFile, addNewFileOrFolder, deleteFile, renameFile } = useContext(ProjectContext);
   
-  // Your existing states (unchanged)
+  // All of your existing states and functions below are unchanged...
   const [isCreating, setIsCreating] = useState(null);
   const [newItemName, setNewItemName] = useState('');
   const [selectedFolder, setSelectedFolder] = useState('');
-
-  // 3. Add state for the context menu
   const [menu, setMenu] = useState(null);
 
-  // Your existing fileTree logic (unchanged)
   const fileTree = useMemo(() => {
     const tree = {};
     Object.keys(files).forEach(path => {
@@ -35,7 +32,6 @@ const FileExplorer = () => {
     return tree;
   }, [files]);
 
-  // Your existing creation logic (unchanged)
   const handleCreate = () => {
     if (!newItemName) {
       setIsCreating(null);
@@ -51,6 +47,7 @@ const FileExplorer = () => {
     setIsCreating(null);
     setSelectedFolder('');
   };
+
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') handleCreate();
     else if (e.key === 'Escape') {
@@ -59,6 +56,7 @@ const FileExplorer = () => {
       setSelectedFolder('');
     }
   };
+
   const handleNewItemClick = (type) => {
     setIsCreating(type);
     if (!selectedFolder) {
@@ -66,12 +64,13 @@ const FileExplorer = () => {
     }
   };
   
-  // 4. Add handlers for the menu actions
   const handleContextMenu = (e, filePath) => {
     e.preventDefault();
     setMenu({ x: e.pageX, y: e.pageY, file: filePath });
   };
+
   const closeMenu = () => setMenu(null);
+
   const handleRename = () => {
     const oldPath = menu.file;
     const isFolder = oldPath.endsWith('/');
@@ -84,6 +83,7 @@ const FileExplorer = () => {
     }
     closeMenu();
   };
+
   const handleDelete = () => {
     if (window.confirm(`Are you sure you want to delete ${menu.file}?`)) {
       deleteFile(menu.file);
@@ -91,7 +91,6 @@ const FileExplorer = () => {
     closeMenu();
   };
 
-  // Your existing renderTree function, with one small addition
   const renderTree = (tree, path = '') => (
     <ul>
       {Object.keys(tree).sort().map(name => {
@@ -101,7 +100,6 @@ const FileExplorer = () => {
         
         return (
           <li key={currentPath}>
-            {/* 5. Add onContextMenu to the file/folder item */}
             <div
               className={`file-item ${activeFile === currentPath ? 'active' : ''}`}
               onContextMenu={(e) => handleContextMenu(e, currentPath)}
@@ -125,7 +123,6 @@ const FileExplorer = () => {
 
   return (
     <aside className="file-explorer" onClick={() => menu && closeMenu()}>
-      {/* Your existing header (unchanged) */}
       <div className="file-explorer-header">
         <span>FILES</span>
         <div className="action-icons">
@@ -137,7 +134,6 @@ const FileExplorer = () => {
       
       {renderTree(fileTree)}
 
-      {/* Your existing input field (unchanged) */}
       {isCreating && (
         <div className="new-item-input-container">
           <span>{isCreating === 'file' ? '📄' : '📁'}</span>
@@ -150,7 +146,6 @@ const FileExplorer = () => {
         </div>
       )}
 
-      {/* 6. Conditionally render the ContextMenu */}
       {menu && (
         <ContextMenu
           x={menu.x}

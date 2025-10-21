@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { useProject } from '../../context/ProjectContext';
+import React, { useState, useEffect, useContext } from 'react'; // 1. Import useContext
+import { ProjectContext } from '../../context/ProjectContext'; // 2. Import ProjectContext
 import * as api from '../../api/projectService';
 import './ProjectList.css';
 
 const ProjectList = ({ onClose }) => {
   const [projects, setProjects] = useState([]);
-  const { loadProject } = useProject();
+  // 3. Change useProject() to useContext(ProjectContext)
+  const { loadProject } = useContext(ProjectContext);
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -31,7 +32,7 @@ const ProjectList = ({ onClose }) => {
             {projects.map((project) => (
               <li key={project._id} onClick={() => handleLoad(project._id)}>
                 <span className="project-name">
-                  Project {project._id.slice(-6)} {/* Display a partial ID as a name */}
+                  Project {project._id.slice(-6)}
                 </span>
                 <span className="project-date">
                   {new Date(project.createdAt).toLocaleDateString()}

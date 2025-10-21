@@ -1,13 +1,16 @@
-import React from 'react';
+// 1. Import 'useContext' from React and 'ProjectContext'
+import React, { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import { ProjectProvider, useProject } from './context/ProjectContext';
+import { ProjectProvider, ProjectContext } from './context/ProjectContext';
 import './App.css';
 
 const AppContent = () => {
-  const { theme } = useProject();
+  // 2. Change 'useProject()' to 'useContext(ProjectContext)'
+  const { theme } = useContext(ProjectContext);
+  
   return (
     <div className={`App ${theme}`}>
       <Routes>

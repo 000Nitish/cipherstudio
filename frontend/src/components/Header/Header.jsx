@@ -1,10 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom'; // 1. Import Link from react-router-dom
-import { useProject } from '../../context/ProjectContext';
+import React, { useContext } from 'react'; // 1. Import useContext from React
+import { Link, useNavigate } from 'react-router-dom';
+import { ProjectContext } from '../../context/ProjectContext'; // 2. Import ProjectContext
 import './Header.css';
 
 const Header = () => {
-  const { theme, toggleTheme } = useProject();
+  // 3. Change useProject() to useContext(ProjectContext)
+  const { theme, toggleTheme, token, logout } = useContext(ProjectContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <header className="header">
@@ -23,8 +30,11 @@ const Header = () => {
           <span className="slider"></span>
         </label>
         
-        {/* 2. Replace the <button> with a <Link> component */}
-        <Link to="/login" className="login-button">Login</Link>
+        {token ? (
+          <button onClick={handleLogout} className="login-button">Logout</button>
+        ) : (
+          <Link to="/login" className="login-button">Login</Link>
+        )}
       </div>
     </header>
   );
