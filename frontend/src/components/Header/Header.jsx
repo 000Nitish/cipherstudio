@@ -16,10 +16,10 @@ const Header = () => {
   return (
     <header className="header">
       <div className="logo">
-        CipherSchools
+        CipherStudio
       </div>
       <div className="header-right">
-        <span className="app-name">CipherStudio</span>
+        <span className="app-name">ChangeTheme</span>
         
         <label className="theme-switcher">
           <input 
