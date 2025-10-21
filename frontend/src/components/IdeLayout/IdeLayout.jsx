@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'; // 1. Import useContext
 import { Sandpack } from "@codesandbox/sandpack-react";
 import { ProjectContext } from '../../context/ProjectContext'; // 2. Import ProjectContext
-import './IdeLayout.css';
+import './Idelayout.css';
 
 const IdeLayout = () => {
   // 3. Change useProject() to useContext(ProjectContext)
